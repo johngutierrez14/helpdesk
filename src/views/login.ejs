@@ -1,0 +1,61 @@
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center auth px-0">
+      <div class="row w-100 mx-0">
+        <div class="col-lg-4 mx-auto">
+          <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+            <div class="brand-logo">
+              <img src="images/logo.svg" alt="logo">
+            </div>
+            <h4>¡Hola! empecemos</h4>
+            <h6 class="font-weight-light">Inicia sesión para continuar.</h6>
+            <form class="pt-3" action="/login" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-lg" id="user" name="user"
+                  placeholder="Nombre de usuario">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-lg" id="password" name="password"
+                  placeholder="Contraseña">
+              </div>
+              <div class="mt-3">
+                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                  href="index">INICIAR SESIÓN</button>
+              </div>
+              <div class="my-2 d-flex justify-content-between align-items-center">
+                <div class="form-check">
+                  <label class="form-check-label text-muted">
+                    <input type="checkbox" class="form-check-input">
+                    Mantenme conectado
+                  </label>
+                </div>
+                <a href="#" class="auth-link text-black">¿Has olvidado tu contraseña?</a>
+              </div>
+              <div class="mb-2">
+                <button type="button" class="btn btn-block btn-google auth-form-btn">
+                  <i class="ti-google mr-2"></i>Conéctate usando Google
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- inicio Script -->
+<%- include('components/script') %>
+  <!-- fin Script -->
+<% if(alert) { %>
+  <script>
+    Swal.fire({
+      title: '<%= alertTitle %>',
+      text: '<%= alertMessage %>',
+      icon: '<%= alertIcon %>',
+      confirmButtonText: <%= showConfirmButton %>,
+      timer: <%= timer %>
+    }).then(() => {
+        window.location.href = '/<%= ruta %>';
+      })
+  </script>
+<% } %>

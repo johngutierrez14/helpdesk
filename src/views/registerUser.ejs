@@ -1,0 +1,68 @@
+<div class="container-scroller">
+  <!-- inicio Navbar -->
+  <%- include('components/navbar') %>
+    <!-- fin Navbar -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- inicio Panel Setting -->
+      <%- include('components/panelSetting') %>
+        <!-- fin Panel Setting -->
+        <!-- inicio Sidebar Right -->
+        <%- include('components/sidebarRight') %>
+          <!-- fin Sidebar Right -->
+          <!-- inicio Sidebar Left -->
+          <%- include('components/sidebar') %>
+            <!-- fin Sidebar Left -->
+            <div class="main-panel">
+              <div class="content-wrapper">
+                <div class="row">
+                  <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Registro de usuarios</h4>
+                        <p class="card-description">
+                          Registro de usuarios
+                        </p>
+                        <form action="/register_user" method="post" class="forms-sample">
+                          <div class="form-group">
+                            <label for="name">Nombres</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nombres">
+                          </div>
+                          <div class="form-group">
+                            <label for="last_name">Apellidos</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Apellidos">
+                          </div>
+                          <div class="form-group">
+                            <label for="user">Nombre de usuario</label>
+                            <input type="text" class="form-control" id="user" name="user" placeholder="Nombre de usuario">
+                          </div>
+                          <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                          </div>
+                          <div class="form-group">
+                            <label for="rol">Rol</label>
+                            <select class="form-control" id="rol" name="rol">
+                              <option selected disabled value="">Seleccione...</option>
+                              <option value="Administrador">Administrador</option>
+                              <option value="Cliente">Cliente</option>
+                              <option value="Soporte">Soporte</option>
+                              <option value="Supervisor">Supervisor</option>
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                          <button class="btn btn-light">Cancel</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- inicio Footer -->
+              <%- include('components/footer') %>
+                <!-- fin Footer -->
+            </div>
+    </div>
+</div>
+<!-- inicio Script -->
+<%- include('components/script') %>
+  <!-- fin Script -->

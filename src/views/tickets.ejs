@@ -1,0 +1,93 @@
+<div class="container-scroller">
+  <!-- inicio Navbar -->
+  <%- include('components/navbar') %>
+  <!-- fin Navbar -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- inicio Panel Setting -->
+    <%- include('components/panelSetting') %>
+    <!-- fin Panel Setting -->
+    <!-- inicio Sidebar Right -->
+    <%- include('components/sidebarRight') %>
+    <!-- fin Sidebar Right -->
+    <!-- inicio Sidebar Left -->
+    <%- include('components/sidebar') %>
+    <!-- fin Sidebar Left -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Nuevo ticket</h4>
+                <form class="form-sample">
+                  <p class="card-description">Registro de información</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="category">Categoria</label>
+                              <div class="col-sm-9">
+                                  <select class="form-control" name="category" id="category">
+                                    
+                                  </select>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="title">Titulo</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Name">
+                          </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <div id="description" name="description"></div>
+                  </div>
+                  <button type="submit" class="btn btn-primary mr-2">
+                    Guardar
+                  </button>
+                  <button class="btn btn-light">Cancelar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- inicio Footer -->
+      <%- include('components/footer') %>
+      <!-- fin Footer -->
+    </div>
+  </div>
+</div>
+<!-- inicio Script -->
+<%- include('components/script') %>
+<!-- fin Script -->
+
+<script>
+  $('#description').summernote({
+    placeholder: 'Escribe aquí...',
+    tabsize: 2,
+    height: 100
+  });
+</script>
+
+<script>
+  // Hacer una solicitud para obtener las categorías cuando la página se carga
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('/getCategory')
+      .then(response => response.json())
+      .then(data => {
+        const selectElement = document.getElementById('category');
+        selectElement.innerHTML = '<option selected disabled value="">Seleccione...</option>';
+
+        // Iterar sobre las categorías y agregar opciones al elemento select
+        data.categories.forEach(category => {
+          const option = document.createElement('option');
+          option.textContent = category.name; // Ajusta esto según el nombre real en tu base de datos
+          selectElement.appendChild(option);
+        });
+      })
+      .catch(error => console.error('Error al obtener categorías:', error));
+  });
+</script>
+
